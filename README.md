@@ -7,7 +7,7 @@ Firstly, you need cmake, you can install in ubuntu using these command
 ```
 sudo apt install cmake
 ```
-After that, you need to clone my project to your computer
+After that, you need to clone my project to your computer(On this example, the code below will download the code to your desktop, in the directory named Interpreter)
 
 ```
 git clone https://github.com/BurakDmb/Interpreter-Implementation-Using-Lex-And-Yacc.git ~/Desktop/Interpreter
