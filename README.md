@@ -1,7 +1,7 @@
 # Interpreter-Implementation-Using-Lex-And-Yacc
 My interpreter implementation homework for Programming Languages Homework, used lex and yacc for implementation
 
-#To compile and run the code:
+#To compile and run the code, follow these steps:
 Firstly, you need cmake, you can install in ubuntu using these command
 
 ```
@@ -24,4 +24,4 @@ cmake ..
 make
 ./Interpreter
 ```
-
+Or if you using [CLion, A cross-platform IDE for C and C++](https://www.jetbrains.com/clion/) You can simply use the Import Project from Sources and run project from ide. You can easily build and run the project from the CLion
