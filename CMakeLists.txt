@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.9)
+project(Bil395_HW1 C)
+
+set(CMAKE_C_STANDARD 99)
+
+#add_executable(Bil395_HW1 main.c)
+
+find_package(BISON)
+find_package(FLEX)
+
+BISON_TARGET(MyParser prog.yacc ${CMAKE_CURRENT_BINARY_DIR}/y.tab.c)
+FLEX_TARGET(MyScanner prog.lex  ${CMAKE_CURRENT_BINARY_DIR}/lex.yy.c)
+ADD_FLEX_BISON_DEPENDENCY(MyScanner MyParser)
+
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+add_executable(HW1
+        ${BISON_MyParser_OUTPUTS}
+        ${FLEX_MyScanner_OUTPUTS}
+        )
