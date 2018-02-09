@@ -1,0 +1,18 @@
+!!Sample Program for testing the EtuMnaLanguage, made by Burak Han Demirbilek
+!!This program calculates the averages of a, b and c.
+PROGRAM AverageCalc;
+DEGISKENLER
+numItems ESITTIR 3, a,
+b, c, avg, AVG;
+KOMUTLAR
+YAZ 'This program calculates the averages of a, b and c.';
+
+OKU 'Please enter the value of a' a;    !!reads the value of a
+OKU 'Please enter the value of b' b;    !!reads the value of b
+OKU 'Please enter the value of c' c;    !!reads the value of c
+avg <-- a ARTI b ARTI c;   !!calculates with infix
+avg <-- avg BOLU numItems;
+AVG <-- a b TOPLA c TOPLA numItems BOL;    !!calculates with postfix
+YAZ 'Results:';
+YAZ 'Average with infix notation: ' avg;
+YAZ 'Average with postfix notation: ' AVG;

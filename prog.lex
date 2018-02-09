@@ -1,30 +1,31 @@
 %{
     #include "y.tab.h"
     #include <string.h>
+    void yyerror(char *);
 %}
 
 %%
-PROGRAM {return PROGRAM;}
 
+!!.*\n {;}
+PROGRAM {return PROGRAM;}
 OKU         {return OKU;}
 YAZ         {return YAZ;}
 
-ARTI         {return ARTI;}
-EKSI         {return EKSI;}
-CARPI          {return CARPI;}
-BOLU           {return BOLU;}
+ARTI         {yylval.str="+";return ARTI;}
+EKSI         {yylval.str="-";return EKSI;}
+CARPI          {yylval.str="*";return CARPI;}
+BOLU           {yylval.str="/";return BOLU;}
 
-TOPLA         {yylval.str='+';return TOPLA;}
-CIKAR         {yylval.str='-';return CIKAR;}
-CARP          {yylval.str='*';return CARP;}
-BOL           {yylval.str='/';return BOL;}
+TOPLA         {yylval.str="+";return TOPLA;}
+CIKAR         {yylval.str="-";return CIKAR;}
+CARP          {yylval.str="*";return CARP;}
+BOL           {yylval.str="/";return BOL;}
 "<--"             {return ATA;}
 
 
 ESITTIR           {yylval.str=strdup(yytext);return ESITTIR;}
-DEGISKENLER           {yylval.str=strdup(yytext);return DEGISKENLER;}
 KOMUTLAR            {yylval.str=strdup(yytext);return KOMUTLAR;}
-EXIT                {yylval.str=strdup(yytext);return EXIT;}
+DEGISKENLER           {yylval.str=strdup(yytext);return DEGISKENLER;}
 
 
 
@@ -32,7 +33,7 @@ EXIT                {yylval.str=strdup(yytext);return EXIT;}
                                 yylval.integer= atoi(yytext);
                                 return int_literal;
                                 }
-"\'"[a-zA-Z]([a-zA-Z0-9])*"\'"        { char buffer[strlen(yytext)-2];memcpy(buffer,&yytext[1],strlen(yytext)-2);  yylval.str=strdup(buffer);
+"\'"[^\n]*"\'"        { char buffer[strlen(yytext)-2];memcpy(buffer,&yytext[1],strlen(yytext)-2); buffer[strlen(yytext)-2]='\0';  yylval.str=strdup(buffer);
                                     return (message);
                                 }
 
@@ -47,7 +48,7 @@ EXIT                {yylval.str=strdup(yytext);return EXIT;}
 
 ,     {yylval.operator=',';return COMMA;}
 ;     {yylval.operator=';';return SEMICOLON;}
-[ \t\n]     ;
+[ \t\n\s]     ;
 
 
 .               {yyerror("invalid character");}
