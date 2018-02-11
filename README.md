@@ -25,3 +25,5 @@ make
 ./Interpreter
 ```
 Or if you are using [CLion, A cross-platform IDE for C and C++](https://www.jetbrains.com/clion/) You can simply use the Import Project from Sources and run project from ide. You can easily build and run the project from the CLion
+
+Credits: I have used the hash table implementation from https://github.com/troydhanson/uthash to ease up the data structure implementation.
