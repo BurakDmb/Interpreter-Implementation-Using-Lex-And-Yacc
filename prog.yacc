@@ -68,6 +68,7 @@ Statement:
 InputStmt:
                 OKU message VariableName    {
                                                 int value;
+                                                printf("%s",$2);
                                                 scanf("%d",&value);
                                                 struct variable *a;
                                                 a=find_var($3,0);
